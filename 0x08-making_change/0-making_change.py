@@ -8,14 +8,12 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    # Initialize dp table
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0  # Base case: 0 coins needed for amount 0
+    dynamic_table = [float('inf')] * (total + 1)
+    dynamic_table[0] = 0
 
-    # Fill the dp table
     for coin in coins:
         for i in range(coin, total + 1):
-            dp[i] = min(dp[i], dp[i - coin] + 1)
+            dynamic_table[i] = min(dynamic_table[i],
+                                   dynamic_table[i - coin] + 1)
 
-    # Check if a solution exists
-    return dp[total] if dp[total] != float('inf') else -1
+    return dynamic_table[total] if dynamic_table[total] != float('inf')else -1
