@@ -1,4 +1,10 @@
+#!/usr/bin/python3
+"""Module contains the makingChange function"""
+
+
 def makeChange(coins, total):
+    """The function finds determines te fewes number required to get
+        a given amount (total)"""
     if total <= 0:
         return 0
 
@@ -13,4 +19,3 @@ def makeChange(coins, total):
 
     # Check if a solution exists
     return dp[total] if dp[total] != float('inf') else -1
-
